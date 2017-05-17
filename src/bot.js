@@ -34,3 +34,5 @@ function changeDiscriminator() {
 function checkDiscrim() {
     return client.user.discriminator == config.desiredDiscrim;
 }
+
+client.login(config.botToken);
