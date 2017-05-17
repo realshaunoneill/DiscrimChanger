@@ -1,0 +1,14 @@
+{
+  "name": "discrimchanger",
+  "version": "1.0.0",
+  "description": "Discord discriminator changer",
+  "main": "bot.js",
+  "scripts": {
+    "run": "node src/bot.js"
+  },
+  "author": "XeliteXirish",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.1.0"
+  }
+}
