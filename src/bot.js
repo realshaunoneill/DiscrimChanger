@@ -14,21 +14,28 @@ client.once('ready', () => {
 function changeDiscriminator() {
 
     let users = client.users.array();
+    let x = 0;
 
-    for (let x = 0; x < users; x++){
-        setInterval(function () {
+    let discrimInterval = setInterval(function () {
 
-            client.user.setUsername(users.username, config.userAccountPassword);
+        client.user.setUsername(users[x].username, config.userAccountPassword).catch(err => {
+            console.error(`Unable to change nickname, Error: ${err.stack}`)
+        });
+console.log(x);
+        if (x % 10 === 0) {
+            console.log(`Done trying ${x} usernames! Still going!`);
+        }
 
-            if (x % 10 === 0){
-                console.log(`Done trying ${x} usernames! Still going!`);
-            }
+        if (checkDiscrim()) {
+            clearInterval(discrimInterval);
+            console.log(`You have reached your desired discriminator!`)
+        }
 
-            if (checkDiscrim()) return;
+        x++;
+
+    }, config.changeInterval);
 
 
-        }, config.changeInterval);
-    }
 }
 
 function checkDiscrim() {
